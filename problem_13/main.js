@@ -101,21 +101,4 @@ var problem = [
     '53503534226472524250874054075591789781264330331690'
 ];
 
-var sum = '';
-var current = 0;
-var step, i;
-
-for (step = 0; step < 5; step++) {
-
-    for (i = 0; i < problem.length; i++) {
-        current += parseInt(problem[i].slice(-10), 10);
-        problem[i] = problem[i].slice(0, -10);
-    }
-
-    current = current.toString();
-    sum = current.slice(-10) + sum;
-    current = parseInt(current.slice(0, -10), 10);
-
-}
-
-console.log((current + sum).slice(0, 10));
+console.log(require('../utils/bigInt').sum.apply(null, problem).slice(0, 10));
