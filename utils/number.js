@@ -2,6 +2,13 @@ var primes = require('./primes');
 
 function factorization(number) {
 
+    if (number === 1) {
+        return [{
+            'base': 1,
+            'exponent': 1
+        }];
+    }
+
     if (primes.isPrime(number)) {
         return [{
             'base': number,
@@ -32,6 +39,48 @@ function factorization(number) {
 
 }
 
+function properDivisors(number) {
+    var factors = factorization(number);
+
+    var combineFactors = function() {
+        var result = [];
+        var factor, combinations, current, temp;
+        var i, j;
+
+        if (arguments.length === 0) {
+            return result;
+        }
+
+        factor = arguments[0];
+
+        if (arguments.length === 1) {
+            for (i = 0; i <= factor.exponent; i++) {
+                temp = Math.pow(factor.base, i);
+                if (result.indexOf(temp) < 0) {
+                    result.push(temp);
+                }
+            }
+            return result;
+        }
+
+        combinations = combineFactors.apply(this, Array.prototype.slice.call(arguments, 1));
+
+        for (i = 0; i <= factor.exponent; i++) {
+            current = Math.pow(factor.base, i);
+            for (j = 0; j < combinations.length; j++) {
+                temp = current * combinations[j];
+                if (result.indexOf(temp) < 0) {
+                    result.push(temp);
+                }
+            }
+        }
+
+        return result;
+    };
+
+    return combineFactors.apply(this, factors).sort(function(a,b) { return a - b; });
+}
+
 function numberOfDivisors(number) {
     var factors = factorization(number);
     return factors.reduce(function(previousValue, currentValue) {
@@ -40,4 +89,5 @@ function numberOfDivisors(number) {
 }
 
 exports.factorization = factorization;
+exports.properDivisors = properDivisors;
 exports.numberOfDivisors = numberOfDivisors;
