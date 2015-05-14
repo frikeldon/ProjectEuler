@@ -43,7 +43,7 @@ function mul() {
         return arguments[0].toString();
     }
     if(arguments.length > 2) {
-        return mul(arguments[0].toString(), mul(Array.prototype.slice.call(arguments, 1)));
+        return mul(arguments[0].toString(), mul.apply(this, Array.prototype.slice.call(arguments, 1)));
     }
 
     var a = arguments[0].toString().split('').reverse().join('');
