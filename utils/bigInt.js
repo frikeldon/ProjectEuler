@@ -20,13 +20,13 @@ function sum() {
 
     while(maxLength > 0) {
         for(i = 0; i < numbers.length; i++) {
-            current += parseInt(numbers[i].slice(-stepSize), 10);
+            current += parseInt(numbers[i].slice(-stepSize), 10) || 0;
             numbers[i] = numbers[i].slice(0, -stepSize);
         }
 
         current = current.toString();
         result = current.slice(-stepSize) + result;
-        current = parseInt(current.slice(0, -stepSize), 10);
+        current = parseInt(current.slice(0, -stepSize), 10) || 0;
 
         maxLength -= stepSize;
 
@@ -78,7 +78,7 @@ function pow(base, exp) {
     var prod = '1';
 
     while (exp > 0) {
-        if ((exp & 1) != 0) {
+        if ((exp & 1) !== 0) {
             prod = mul(base, prod);
         }
         base = mul(base, base);
