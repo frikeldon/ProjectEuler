@@ -44,7 +44,31 @@ function isPrime(num) {
 	return primes.indexOf(num) >= 0;
 }
 
+function getPrimeIterator() {
+    var pointer = -1;
+    if (typeof arguments[0] === 'number') {
+        pointer = arguments[0];
+        calculatePrimes(pointer + 1);
+    }
+    var instance = {
+        next: function() {
+            pointer++;
+            calculatePrimes(pointer + 1);
+            return primes[pointer];
+        }
+    };
+    Object.defineProperty(instance, 'value', {
+        get: function() {
+            if (pointer >= 0 && pointer < primes.length) {
+                return primes[pointer];
+            }
+        }
+    });
+    return instance;
+}
+
 exports.primes = primes;
 exports.isPrime = isPrime;
 exports.checkPrimesTo = checkPrimesTo;
 exports.calculatePrimes = calculatePrimes;
+exports.getPrimeIterator = getPrimeIterator;
