@@ -88,6 +88,21 @@ function numberOfDivisors(number) {
     }, 1);
 }
 
+function greatestCommonDivisor(numerator, denominator) {
+    var divNum = properDivisors(numerator);
+    var divDen = properDivisors(denominator);
+
+    var common = [];
+    for (var i = divNum.length - 1; i >= 0; i--) {
+        if (divDen.indexOf(divNum[i]) > -1) {
+            return divNum[i];
+        }
+    }
+
+    return 1;
+}
+
 exports.factorization = factorization;
 exports.properDivisors = properDivisors;
 exports.numberOfDivisors = numberOfDivisors;
+exports.greatestCommonDivisor = greatestCommonDivisor;
