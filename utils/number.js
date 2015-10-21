@@ -102,7 +102,20 @@ function greatestCommonDivisor(numerator, denominator) {
     return 1;
 }
 
+function isPalindrome(num) {
+	num = num.toString();
+	var length = Math.floor(num.length / 2);
+	var last = num.length - 1;
+	for(var i = 0; i < length; i++) {
+		if(num.charAt(i) !== num.charAt(last - i)) {
+			return false;
+		}
+	}
+	return true;
+}
+
 exports.factorization = factorization;
 exports.properDivisors = properDivisors;
 exports.numberOfDivisors = numberOfDivisors;
 exports.greatestCommonDivisor = greatestCommonDivisor;
+exports.isPalindrome = isPalindrome;
