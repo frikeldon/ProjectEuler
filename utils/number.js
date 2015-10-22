@@ -114,7 +114,7 @@ function isPalindrome(num) {
 	return true;
 }
 
-function isTriangularNumber(number) {
+function isTriangular(number) {
     var n = Math.floor(Math.sqrt(number * 2));
     if (number === (n * (n + 1)) / 2) {
         return n;
@@ -122,9 +122,18 @@ function isTriangularNumber(number) {
     return -1;
 }
 
+function isPentagonal(number) {
+    return (1 + Math.sqrt((24 * number) + 1)) % 6 === 0;
+}
+
+function isPentagonal(number) {
+    return (1 + Math.sqrt((24 * number) + 1)) % 6 === 0;
+}
+
 exports.factorization = factorization;
 exports.properDivisors = properDivisors;
 exports.numberOfDivisors = numberOfDivisors;
 exports.greatestCommonDivisor = greatestCommonDivisor;
 exports.isPalindrome = isPalindrome;
-exports.isTriangularNumber = isTriangularNumber;
+exports.isTriangular = isTriangular;
+exports.isPentagonal = isPentagonal;

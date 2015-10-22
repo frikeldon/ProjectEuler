@@ -14,7 +14,7 @@ console.log(words.map(function(word) {
         return previous + current;
     }, 0);
 }).reduce(function(previous, current) {
-    if (number.isTriangularNumber(current) > -1) {
+    if (number.isTriangular(current) > -1) {
         return previous + 1;
     }
     return previous;
