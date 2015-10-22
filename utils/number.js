@@ -114,8 +114,17 @@ function isPalindrome(num) {
 	return true;
 }
 
+function isTriangularNumber(number) {
+    var n = Math.floor(Math.sqrt(number * 2));
+    if (number === (n * (n + 1)) / 2) {
+        return n;
+    }
+    return -1;
+}
+
 exports.factorization = factorization;
 exports.properDivisors = properDivisors;
 exports.numberOfDivisors = numberOfDivisors;
 exports.greatestCommonDivisor = greatestCommonDivisor;
 exports.isPalindrome = isPalindrome;
+exports.isTriangularNumber = isTriangularNumber;
