@@ -64,6 +64,11 @@ function getPrimeIterator() {
             }
         }
     });
+    Object.defineProperty(instance, 'index', {
+        get: function() {
+            return pointer;
+        }
+    });
     return instance;
 }
 
