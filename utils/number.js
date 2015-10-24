@@ -130,6 +130,17 @@ function isPentagonal(number) {
     return (1 + Math.sqrt((24 * number) + 1)) % 6 === 0;
 }
 
+function factorial(number, until) {
+    var acumulated = number;
+    var floor = typeof until === 'number' ? until : 1;
+
+    for (var i = number - 1; i > floor; i--) {
+        acumulated *= i;
+    }
+
+    return acumulated;
+}
+
 exports.factorization = factorization;
 exports.properDivisors = properDivisors;
 exports.numberOfDivisors = numberOfDivisors;
@@ -137,3 +148,4 @@ exports.greatestCommonDivisor = greatestCommonDivisor;
 exports.isPalindrome = isPalindrome;
 exports.isTriangular = isTriangular;
 exports.isPentagonal = isPentagonal;
+exports.factorial = factorial;

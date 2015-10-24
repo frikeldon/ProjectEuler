@@ -1,3 +1,5 @@
+var number = require('./number');
+
 function getPermutations(dicc) {
 
     var count = 0;
@@ -74,4 +76,15 @@ function getPermutations(dicc) {
     return instance;
 }
 
+function getCombinatoricCount(objectsSize, setSize) {
+    if (setSize > objectsSize) {
+        return 0;
+    }
+    if (setSize === objectsSize) {
+        return 1;
+    }
+    return number.factorial(objectsSize, objectsSize - setSize) / number.factorial(setSize);
+}
+
 exports.getPermutations = getPermutations;
+exports.getCombinatoricCount = getCombinatoricCount;
