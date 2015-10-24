@@ -1,3 +1,11 @@
+function paddingLeft(str, len, char) {
+    if (str.length >= len) {
+        return str;
+    }
+    var padding = (new Array(1 + len - str.length)).join(char);
+    return padding + str;
+}
+
 function sum() {
     if(arguments.length === 0) {
         return '0';
@@ -24,7 +32,7 @@ function sum() {
             numbers[i] = numbers[i].slice(0, -stepSize);
         }
 
-        current = current.toString();
+        current = paddingLeft(current.toString(), Math.min(stepSize, maxLength), '0');
         result = current.slice(-stepSize) + result;
         current = parseInt(current.slice(0, -stepSize), 10) || 0;
 
