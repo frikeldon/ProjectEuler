@@ -1,5 +1,5 @@
-var primes = [2, 3];
-var lastCheck = 5;
+var primes = [2, 3, 5, 7];
+var lastCheck = 9;
 
 function checkPrimeNumber(num) {
 	var max = Math.ceil(Math.sqrt(num));
@@ -37,11 +37,32 @@ function calculatePrimes(amount) {
 }
 
 function isPrime(num) {
+    if ((num > 7) && (num % 2 === 0 || num % 3 === 0 || num % 5 === 0 || num % 7 === 0)) {
+        return false;
+    }
+
 	if(num >= lastCheck) {
 		checkPrimesTo(num);
 	}
 
 	return primes.indexOf(num) >= 0;
+}
+
+function isPrimeDet(num) {
+    var i;
+    if (num <= 3) {
+        return num > 1;
+    }
+    if (num % 2 === 0 || num % 3 === 0) {
+        return false;
+    }
+
+    for (i = 5; i * i <= num; i += 6) {
+        if (num % i === 0 || num % (i + 2) === 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 function getPrimeIterator() {
@@ -74,6 +95,7 @@ function getPrimeIterator() {
 
 exports.primes = primes;
 exports.isPrime = isPrime;
+exports.isPrimeDet = isPrimeDet;
 exports.checkPrimesTo = checkPrimesTo;
 exports.calculatePrimes = calculatePrimes;
 exports.getPrimeIterator = getPrimeIterator;
