@@ -141,6 +141,12 @@ function factorial(number, until) {
     return acumulated;
 }
 
+function phi(number) {
+    return factorization(number).reduce(function(previousValue, currentValue) {
+        return previousValue * (1 - (1 / currentValue.base));
+    }, number);
+}
+
 exports.factorization = factorization;
 exports.properDivisors = properDivisors;
 exports.numberOfDivisors = numberOfDivisors;
@@ -149,3 +155,4 @@ exports.isPalindrome = isPalindrome;
 exports.isTriangular = isTriangular;
 exports.isPentagonal = isPentagonal;
 exports.factorial = factorial;
+exports.phi = phi;
