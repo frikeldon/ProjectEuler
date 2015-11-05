@@ -22,7 +22,11 @@ for (i = firstIndex; i < primes.primes.length; i++) {
             diff = primes.primes[j] - primes.primes[i];
             third = primes.primes[j] + diff;
             if (isPermutation(primes.primes[i], third) && primes.isPrime(third)) {
-                console.log(primes.primes[i] + ',' + primes.primes[j] + ',' + third + ' - ' + diff);
+                var concat = primes.primes[i].toString() + primes.primes[j].toString() + third.toString();
+                if (concat !== '148748178147') {
+                    console.log(concat);
+                    return;
+                }
             }
         }
     }
