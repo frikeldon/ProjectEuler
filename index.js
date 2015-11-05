@@ -1,5 +1,11 @@
 var exec = require('child_process').exec;
 
+function leftPadding(str, length, char) {
+    str = str.toString();
+    while (str.length < length) str = char + str;
+    return str;
+}
+
 if (process.argv.length !== 3) {
     console.log('Usage: node index [problem number]');
 } else {
@@ -9,8 +15,8 @@ if (process.argv.length !== 3) {
         console.log('Usage: node index [problem number]');
         console.log('[problem number] must be a number');
     } else {
-
-        require('fs').exists('./problem_' + problemNumber + '/main.js', function(exists) {
+        var filePath = './problems/p' + leftPadding(problemNumber, 3, '0') + '.js';
+        require('fs').exists(filePath, function(exists) {
 
             if (!exists) {
                 console.log('Problem [' + problemNumber + '] not found.');
@@ -18,7 +24,7 @@ if (process.argv.length !== 3) {
 
                 var start = (new Date()).getTime();
 
-                require('child_process').exec('node ./problem_' + problemNumber + '/main.js', function(error, stdout, stderr) {
+                require('child_process').exec('node ' + filePath, function(error, stdout, stderr) {
                     if (error !== null) {
                         console.log('exec error: ' + error);
                         console.log('stderr: ' + stderr);
