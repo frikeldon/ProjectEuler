@@ -16,7 +16,7 @@ var sumDivisors = function(num) {
     }
     
     return result;
-}
+};
 
 var isSumOfTwoAbundants = function(num) {
     for (var i = 0; i < abundant.length; i++) {

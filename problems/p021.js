@@ -11,7 +11,7 @@ var sumDivisors = function(num) {
     }
     
     return result;
-}
+};
 
 var result = 0;
 var amicable;

@@ -6,7 +6,7 @@ var score = function(name) {
         result += name.charCodeAt(i) - 'A'.charCodeAt(0) + 1;
     }
     return result;
-}
+};
 
 var result = 0;
 var i;
