@@ -37,10 +37,6 @@ function calculatePrimes(amount) {
 }
 
 function isPrime(num) {
-    if ((num > 7) && (num % 2 === 0 || num % 3 === 0 || num % 5 === 0 || num % 7 === 0)) {
-        return false;
-    }
-
 	if(num >= lastCheck) {
 		checkPrimesTo(num);
 	}
